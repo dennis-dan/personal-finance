@@ -1,8 +1,8 @@
 package it.personalfinance.finance.client;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -15,7 +15,7 @@ public class FinanceMicroserviceClient {
 
     private final RestClient restClient;
 
-    public FinanceMicroserviceClient(RestClient restClient) {
+    public FinanceMicroserviceClient(@Qualifier("financeRestClient") RestClient restClient) {
         this.restClient = restClient;
     }
 
