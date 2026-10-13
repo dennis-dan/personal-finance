@@ -31,13 +31,11 @@ public class IncomeApi {
 	}
 	
 	@GetMapping(path="/{id}")
-	//recupera una spesa specifica
 	public IncomeResponseDto findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PutMapping(path="/{id}")
-	//Modifica una spesa
 	public IncomeResponseDto update(@PathVariable String id, @RequestBody IncomeRequestDto income) {
 		return service.update(id, income);
 	}
@@ -48,7 +46,6 @@ public class IncomeApi {
 	}
 	
 	@PostMapping(path="/save")
-	//Salva una nuova spesa e ne ritorna gli attributi aggiunti
 	public IncomeResponseDto save(@RequestBody IncomeRequestDto income) {
 		return service.save(income);
 	}
