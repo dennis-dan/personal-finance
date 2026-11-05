@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.personalfinance.finance.dto.IncomeRequestDto;
 import it.personalfinance.finance.dto.IncomeResponseDto;
+import it.personalfinance.finance.dto.IncomeSearchRequestDto;
 import it.personalfinance.finance.service.IncomeOrchestrationService;
 
 @RestController
@@ -49,4 +50,9 @@ public class IncomeApi {
 	public IncomeResponseDto save(@RequestBody IncomeRequestDto income) {
 		return service.save(income);
 	}
+	
+    @PostMapping(path = "/search")
+    public List<IncomeResponseDto> search(@RequestBody IncomeSearchRequestDto dto) {
+        return service.search(dto);
+    }
 }

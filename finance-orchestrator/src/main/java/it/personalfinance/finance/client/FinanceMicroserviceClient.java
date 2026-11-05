@@ -9,6 +9,7 @@ import org.springframework.web.client.RestClient;
 
 import it.personalfinance.finance.dto.ExpenseRequestDto;
 import it.personalfinance.finance.dto.ExpenseResponseDto;
+import it.personalfinance.finance.dto.ExpenseSearchRequestDto;
 
 @Component
 public class FinanceMicroserviceClient {
@@ -55,4 +56,11 @@ public class FinanceMicroserviceClient {
                 .retrieve()
                 .body(ExpenseResponseDto.class);
 	}
+    public List<ExpenseResponseDto> search(ExpenseSearchRequestDto dto) {
+        return restClient.post()
+                .uri("/api/expenses/search")
+                .body(dto)
+                .retrieve()
+                .body(new ParameterizedTypeReference<List<ExpenseResponseDto>>() {});
+    }
 }
