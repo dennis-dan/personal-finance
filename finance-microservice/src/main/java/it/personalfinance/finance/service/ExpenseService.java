@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
+import it.personalfinance.finance.dto.ExpenseSearchRequestDto;
 import it.personalfinance.finance.entity.Expense;
 import it.personalfinance.finance.repository.ExpenseRepository;
 
@@ -53,5 +54,9 @@ public class ExpenseService {
 		Expense result = expenseRepository.save(expense);
 	    // e restituisci il risultato
 		return result;
+	}
+	
+	public List<Expense> search(ExpenseSearchRequestDto dto){
+		return expenseRepository.search(dto);
 	}
 }

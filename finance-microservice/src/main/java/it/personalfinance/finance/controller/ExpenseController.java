@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.personalfinance.finance.dto.ExpenseSearchRequestDto;
 import it.personalfinance.finance.entity.Expense;
 import it.personalfinance.finance.service.ExpenseService;
 
@@ -60,6 +61,12 @@ public class ExpenseController {
 	//Salva una nuova spesa e ne ritorna gli attributi aggiunti
 	public Expense save(@RequestBody Expense expense) {
 		return expenseService.save(expense);
+	}
+	
+	@PostMapping(path="/search")
+	//Cerca una spesa in base a uno o più parametri di ricerca
+	public List<Expense> search(@RequestBody ExpenseSearchRequestDto dto){
+		return expenseService.search(dto);
 	}
 	
 }
