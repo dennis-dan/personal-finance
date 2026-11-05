@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import it.personalfinance.income.dto.IncomeSearchRequestDto;
 import it.personalfinance.income.entity.Income;
 import it.personalfinance.income.service.IncomeService;
 
@@ -47,4 +49,8 @@ public class IncomeController {
 		return service.delete(id);
 	}
 
+	@PostMapping(path="/search")
+	public List<Income> search(@RequestBody IncomeSearchRequestDto dto){
+		return service.search(dto);
+	}
 }

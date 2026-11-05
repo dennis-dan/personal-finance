@@ -2,7 +2,7 @@ package it.personalfinance.income.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import it.personalfinance.income.entity.Income;
 
-public interface IncomeRepository extends MongoRepository<Income,String> {
+public interface IncomeRepository extends MongoRepository<Income,String>, IncomeRepositoryCustom {
 //	Operazione							Endpoint 
 //	Recuperare tutte le entrate			GET /api/incomes
 //	Recuperare un'entrata per ID		GET /api/incomes/{id}

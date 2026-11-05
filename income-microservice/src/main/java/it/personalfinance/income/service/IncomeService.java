@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import it.personalfinance.income.repository.IncomeRepository;
+import it.personalfinance.income.dto.IncomeSearchRequestDto;
 import it.personalfinance.income.entity.Income;
 
 @Service
@@ -48,5 +49,9 @@ public class IncomeService {
 		Income result = repository.save(income);
 	    // e restituisci il risultato
 		return result;
+	}
+	
+	public List<Income> search(IncomeSearchRequestDto dto){
+		return repository.search(dto);
 	}
 }
