@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: personal-finance-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  finance-microservice:
+    build: ./finance-microservice
+    container_name: finance-container
+    ports:
+      - "8080:8080"
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/finance-db
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
