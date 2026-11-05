@@ -8,6 +8,7 @@ import org.springframework.web.client.RestClient;
 
 import it.personalfinance.finance.dto.IncomeRequestDto;
 import it.personalfinance.finance.dto.IncomeResponseDto;
+import it.personalfinance.finance.dto.IncomeSearchRequestDto;
 
 @Component
 public class IncomeMicroserviceClient {
@@ -53,4 +54,12 @@ public class IncomeMicroserviceClient {
 	                .retrieve()
 	                .body(IncomeResponseDto.class);
 		}
+		
+		public List<IncomeResponseDto> search(IncomeSearchRequestDto dto) {
+	        return restClient.post()
+	                .uri("/api/incomes/search")
+	                .body(dto)
+	                .retrieve()
+	                .body(new ParameterizedTypeReference<List<IncomeResponseDto>>() {});
+	    }
 }

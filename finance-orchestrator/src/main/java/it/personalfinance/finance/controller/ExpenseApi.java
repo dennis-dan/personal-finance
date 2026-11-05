@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.personalfinance.finance.dto.ExpenseRequestDto;
 import it.personalfinance.finance.dto.ExpenseResponseDto;
+import it.personalfinance.finance.dto.ExpenseSearchRequestDto;
 import it.personalfinance.finance.service.ExpenseOrchestrationService;
 
 @RestController
@@ -58,4 +59,9 @@ public class ExpenseApi {
 	public ExpenseResponseDto save(@RequestBody ExpenseRequestDto expense) {
 		return service.save(expense);
 	}
+	
+    @PostMapping(path = "/search")
+    public List<ExpenseResponseDto> search(@RequestBody ExpenseSearchRequestDto dto) {
+        return service.search(dto);
+    }
 }

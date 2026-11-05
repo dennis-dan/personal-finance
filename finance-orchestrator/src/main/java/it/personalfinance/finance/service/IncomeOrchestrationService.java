@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import it.personalfinance.finance.client.IncomeMicroserviceClient;
 import it.personalfinance.finance.dto.IncomeRequestDto;
 import it.personalfinance.finance.dto.IncomeResponseDto;
+import it.personalfinance.finance.dto.IncomeSearchRequestDto;
 
 
 @Service
@@ -37,4 +38,8 @@ public class IncomeOrchestrationService {
 		public IncomeResponseDto save(IncomeRequestDto income) {
 			return client.save(income);
 		}
+		
+	    public List<IncomeResponseDto> search(IncomeSearchRequestDto dto) {
+	        return client.search(dto);
+	    }
 }
