@@ -16,6 +16,28 @@ services:
       MONGODB_URI: mongodb://mongo:27017/finance-db
     depends_on:
       - mongo
+      
+  income-microservice:
+    build: ./income-microservice
+    container_name: income-container
+    ports:
+      - "8082:8082"
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/finance-db
+    depends_on:
+      - mongo
+
+  finance-orchestrator:
+    build: ./finance-orchestrator
+    container_name: orchestrator-container
+    ports:
+      - "8081:8081"
+    environment:
+      FINANCE_SERVICE_URL: http://finance-microservice:8080
+      INCOME_SERVICE_URL: http://income-microservice:8082
+    depends_on:
+      - finance-microservice
+      - income-microservice
 
 volumes:
   mongo-data:
